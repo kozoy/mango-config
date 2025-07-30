@@ -8,19 +8,19 @@ dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
 /usr/lib/xdg-desktop-portal-wlr >/dev/null 2>&1 &
 
 # notify
-swaync -c ~/.config/maomao/swaync/config.json -s ~/.config/maomao/swaync/style.css >/dev/null 2>&1 &
+swaync -c ~/.config/mango/swaync/config.json -s ~/.config/mango/swaync/style.css >/dev/null 2>&1 &
 
 # night light
 wlsunset -T 3501 -t 3500 >/dev/null 2>&1 &
 
 # wallpaper
-swaybg -i ~/.config/maomao/wallpaper/czd.png >/dev/null 2>&1 &
+swaybg -i ~/.config/mango/wallpaper/czd.png >/dev/null 2>&1 &
 
 # top bar
-waybar -c ~/.config/maomao/waybar/config -s ~/.config/maomao/waybar/style.css >/dev/null 2>&1 &
+waybar -c ~/.config/mango/waybar/config -s ~/.config/mango/waybar/style.css >/dev/null 2>&1 &
 
 # dock
-lavalauncher -c ~/.config/maomao/lavalauncher/lavalauncher.conf >/dev/null 2>&1 &
+lavalauncher -c ~/.config/mango/lavalauncher/lavalauncher.conf >/dev/null 2>&1 &
 
 # xwayland dpi scale
 echo "Xft.dpi: 140" | xrdb -merge #dpi缩放

@@ -1,5 +1,5 @@
-# maomao-config
-my maomao config
+# mango-config
+my mango config
 
 ![image](https://github.com/user-attachments/assets/7b0f9d38-f919-43a5-ba1d-7bb21a07eea8)
 
@@ -13,5 +13,5 @@ yay -S rofi-wayland foot xdg-desktop-portal-wlr swaybg waybar wl-clip-persist cl
 
 # Usage
 ```bash
-git clone https://github.com/DreamMaoMao/maomao-config.git ~/.config/maomao
+git clone https://github.com/Dreammango/mango-config.git ~/.config/mango
 ```
