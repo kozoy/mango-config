@@ -1,5 +1,9 @@
 #!/bin/bash
-# 自启动脚本 仅作参考
+export GDK_SCALE=2
+export GDK_DPI_SCALE=0.5
+export QT_SCALE_FACTOR=2
+export QT_WAYLAND_FORCE_DPI=192
+export XCURSOR_SIZE=48
 
 set +e
 
@@ -49,3 +53,5 @@ sway-audio-idle-inhibit >/dev/null 2>&1 &
 
 # change light value and volume value by swayosd-client in keybind
 swayosd-server >/dev/null 2>&1 &
+
+kanshi &
