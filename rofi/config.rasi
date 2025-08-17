@@ -24,6 +24,7 @@ configuration {
     sort: true;
     sorting-method:"fzf";
     display-drun: " ";
+    terminal: "foot --config=/home/kozo/.config/maomao/foot/foot.ini";
 }
 
 listview {

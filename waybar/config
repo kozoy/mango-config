@@ -18,9 +18,10 @@
         "network",
         "pulseaudio",
         "cpu",
+        "memory",
         "temperature",
-        "backlight",
         "clock",
+        "battery",
         "custom/notification",
         "custom/power"
     ],
@@ -79,6 +80,12 @@
     "cpu": {
       "interval": 2,
       "format": " {load}%"
+    },
+    "memory": {
+      "interval": 2,
+      "format": "{used:0.1f}GiB",
+      "tooltip-format": "Memory - {used:0.1f}GiB used",
+      "on-click-right": "foot htop"
     },
     "temperature": {
       "thermal-zone": 2,
@@ -148,22 +155,30 @@
       }
     },
     "pulseaudio": {
-        "format": "{icon} {volume}%",
-        "tooltip": false,
-        "format-muted": " Muted",
-        "on-click": "pamixer -t",
-        "on-scroll-up": "pamixer -i 2",
-        "on-scroll-down": "pamixer -d 2",
-        "scroll-step": 5,
-        "format-icons": {
-            "headphone": "",
-            "hands-free": "",
-            "headset": "",
-            "phone": "",
-            "portable": "",
-            "car": "",
-            "default": ["", "", ""]
-        }
+      "format": "{icon} {volume}",  // 添加 {desc} 显示 sink 描述（如 "Headphones"）
+      "format-bluetooth": "{icon} {volume}% {desc}",
+      "format-muted": "🔇 Muted",
+      "format-source": "{volume}% ",
+      "format-source-muted": "",
+      "tooltip": true,  // 启用 tooltip
+      "tooltip-format": "{desc} - {volume}%",  // tooltip 显示 sink 名和音量
+      "scroll-step": 5,  // 保持滚动步长
+      "max-volume": 100,  // 防止音量超过 100%
+      "ignored-sinks": ["HDMI3", "HDMI2", "HDMI1"],  // 忽略所有 HDMI sink（用描述名，从 pactl list sinks | grep Description 获取精确值）
+      "on-click": "pamixer -t",  // 切换静音
+      "on-click-right": "pavucontrol",  // 右键打开 pavucontrol
+      "on-click-middle": "pactl set-default-sink 113",  // 中键切换到 Headphones sink（替换 113 为实际 ID，如果 ID 变用 sink 名如 alsa_output...Headphones__sink）
+      "on-scroll-up": "pamixer -i 2",  // 增加 2%
+      "on-scroll-down": "pamixer -d 2",  // 减少 2%
+      "format-icons": {
+        "headphone": "🎧",
+          "hands-free": "🎧",
+          "headset": "🎧",
+          "phone": "☎️",
+          "portable": "☎️",
+          "car": "🚗",
+          "default": ["🔈", "🔉", "🔊"]
+      }
     },
     "custom/power": {
         "format": "",
@@ -226,7 +241,7 @@
                    "on-click-right": "mode"
         }
     },
-    "battery": {
+    "battery#hid": {
         "bat": "hidpp_battery_0",
         "interval": 1800,
         "states": {
@@ -236,5 +251,19 @@
         "format": "{icon}",
         "format-icons": ["", "", "", "", ""],
         "max-length": 25
+    },
+    "battery": {
+        "states": {
+            "warning": 30,  // 低于30%时警告
+            "critical": 15  // 低于15%时紧急
+        },
+        "format": "{capacity}% {icon}",  // 显示格式：容量% + 图标
+        "format-charging": "{capacity}% ⚡",  // 充电时格式
+        "format-plugged": "{capacity}% 🔌",  // 插电时格式
+        "format-full": "{capacity}% 🔋",  // 满电时格式
+        "format-icons": ["", "", "", "", ""],  // 图标数组，从低到高电量
+        "tooltip": true,  // 启用悬停提示
+        "tooltip-format": "剩余时间: {timeTo}",  // 提示显示剩余时间
+        "interval": 60  // 每60秒刷新一次
     }
 }

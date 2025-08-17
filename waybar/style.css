@@ -33,6 +33,7 @@ tooltip {
 #battery,
 #pulseaudio,
 #cpu,
+#memory,
 #temperature,
 #backlight,
 #network,
@@ -363,6 +364,17 @@ tooltip {
 }
 
 #cpu {
+  background: rgba(40, 40, 40, 0.76);
+  color: #ddca9e;
+  border-width: 2px;
+  border-style: solid;
+  border-color: #c9b890;
+  border-right: 0px;
+  border-left: 0px;
+  border-radius: 0px;
+}
+
+#memory {
   background: rgba(40, 40, 40, 0.76);
   color: #ddca9e;
   border-width: 2px;

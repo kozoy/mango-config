@@ -14,7 +14,7 @@ swaync -c ~/.config/maomao/swaync/config.json -s ~/.config/maomao/swaync/style.c
 wlsunset -T 3501 -t 3500 >/dev/null 2>&1 &
 
 # wallpaper
-swaybg -i ~/.config/maomao/wallpaper/czd.png >/dev/null 2>&1 &
+swaybg -i ~/.config/maomao/wallpaper/Chapter3_1_8k_4_b960e.JPG >/dev/null 2>&1 &
 
 # top bar
 waybar -c ~/.config/maomao/waybar/config -s ~/.config/maomao/waybar/style.css >/dev/null 2>&1 &
@@ -35,7 +35,7 @@ wl-clip-persist --clipboard regular --reconnect-tries 0 >/dev/null 2>&1 &
 # clipboard content manager
 wl-paste --type text --watch cliphist store >/dev/null 2>&1 &
 
-# bluetooth 
+# bluetooth
 blueman-applet >/dev/null 2>&1 &
 
 # network
